@@ -1,4 +1,4 @@
-#!/bin/usr/env bash
+#!/usr/bin/env bash
 #salam
 # shellcheck disable=SC2009
 ps aux | grep bash
