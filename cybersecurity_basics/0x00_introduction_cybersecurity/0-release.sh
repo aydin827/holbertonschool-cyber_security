@@ -1,2 +1,2 @@
 #!/bin/bash
-grep '^ID=' /etc/os-release | cut -d= -f2 | tr -d '"'
+grep -oP '^ID=\K.*' /etc/os-release | tr -d '"'
