@@ -1,2 +1,2 @@
 #!/bin/bash
-grep -oP '^ID=\K.*' /etc/os-release | tr -d '"'
+lsb_release -i -s'
