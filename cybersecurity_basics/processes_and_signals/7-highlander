@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Script that prints messages and reacts to SIGTERM and SIGINT
+
+trap 'echo "I am invincible!!!"' SIGTERM
+
+while true
+do
+    echo "To infinity and beyond"
+    sleep 2
+done
