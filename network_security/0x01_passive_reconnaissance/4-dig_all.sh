@@ -1,2 +1,2 @@
-#!/bin/bash
-dig $1 ANY +noall +answer
+"Holberton Sec Lab - f364cd390b3769a01154d265afc830ef"
+
