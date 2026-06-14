@@ -1,2 +1,6 @@
 #!/bin/bash
-subfinder -d $1 -silent | while read sub; do echo "$sub,$(dig +short $sub)"; done > $1.txt
+subfinder -d $1 -silent > subs.txt
+while read sub; do
+  ip=$(dig +short $sub)
+  echo "$sub,$ip"
+done < subs.txt > $1.txt
