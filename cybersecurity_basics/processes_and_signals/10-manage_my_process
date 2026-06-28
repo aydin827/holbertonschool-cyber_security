@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+# Script that manages manage_my_process (start/stop/restart)
+
+PID_FILE="/tmp/my_process.pid"
+PROCESS="./manage_my_process"
+
+start() {
+    $PROCESS > /tmp/my_process.log 2>&1 &
+    echo $! > "$PID_FILE"
+    echo "manage_my_process started"
+}
+
+stop() {
+    if [ -f "$PID_FILE" ]; then
+        kill "$(cat $PID_FILE)" 2>/dev/null
+        rm -f "$PID_FILE"
+    fi
+    echo "manage_my_process stopped"
+}
+
+restart() {
+    if [ -f "$PID_FILE" ]; then
+        kill "$(cat $PID_FILE)" 2>/dev/null
+        rm -f "$PID_FILE"
+    fi
+
+    $PROCESS > /tmp/my_process.log 2>&1 &
+    echo $! > "$PID_FILE"
+
+    echo "manage_my_process restarted"
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    restart)
+        restart
+        ;;
+    *)
+        echo "Usage: manage_my_process {start|stop|restart}"
+        ;;
+esac
