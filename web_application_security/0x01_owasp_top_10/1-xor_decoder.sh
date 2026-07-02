@@ -1,14 +1,13 @@
 #!/bin/bash
 
-input="$1"
-clean="${input#\{xor\}}"
-
-echo "$clean" | base64 -d | python3 -c '
+python3 -c '
 import sys
+import base64
 
-data = sys.stdin.buffer.read()
-key = b"websphere"
+hash_input = sys.argv[1].replace("{xor}", "")
+decoded_bytes = base64.b64decode(hash_input)
 
-out = bytes([data[i] ^ key[i % len(key)] for i in range(len(data))])
-print(out.decode(errors="ignore"))
-'
+for byte in decoded_bytes:
+    print(chr(byte ^ 95), end="")
+print("")
+' "$1"
