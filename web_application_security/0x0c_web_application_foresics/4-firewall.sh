@@ -1,3 +1,3 @@
 #!/bin/bash
 
-grep -i "iptables" auth.log | wc -l
+grep -i "iptables" auth.log | grep -- "-A" | wc -l
