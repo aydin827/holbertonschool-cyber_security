@@ -1,3 +1,4 @@
 #!/bin/bash
 
-cat $1 | tr ' ' '\n' | sort | uniq -c | sort -nr
+FILE=${1:-auth.log}
+grep ssh $FILE
