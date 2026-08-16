@@ -1,3 +1,3 @@
 #!/bin/bash
 
-grep "Accepted" auth.log | awk '{print $(NF-5)}' | sort -u | wc -l
+grep "Accepted" auth.log | awk '{print $10}' | sort -u | wc -l
